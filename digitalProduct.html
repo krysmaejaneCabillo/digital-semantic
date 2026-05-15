@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="digitalProduct.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div id="app">
+        <nav class="nav-bar">
+            <div id="logo">
+                <p id="krys">ProPlanner</p>
+                <p id="smart">Your Smart Workflow Partner</p>
+            </div>
+            <div>
+                <i @click="menuBar" class="fa-solid fa-bars"></i>
+            </div>
+
+            <div id="nav-text" v-if="menu">
+                <p @click="homePg" class="home">Home</p>
+                <p @click="seeBenefits" class="home">Benefits</p>
+                <p @click="seeFeatures" class="home">Feature</p>
+
+            </div>
+            <!-- <div id="nav-text" v-if="menu">
+                <p @click="homePg" class="home">Home</p>
+                <p @click="seeBenefits" class="home">Benefits</p>
+                <p @click="seeFeatures" class="home">Feature</p>
+            </div> -->
+            <div class="black" v-if="bgColor" @click="close">
+
+            </div>
+
+            <div id="lgs">
+                <p @click="homePg" class="ho">Home</p>
+                <p @click="seeBenefits" class="ho">Benefits</p>
+                <p @click="seeFeatures" class="ho">Feature</p>
+            </div>
+            <div class="black" v-if="bgColor" @click="close">
+
+            </div>
+        </nav>
+
+
+        <header id="home" class="hero" v-if="hero">
+            <div id="text">
+                <h2 id="org">Organize Your Life, One Click at a Time</h2>
+                <p id="plan">ProPlanner is the ultimate digital planner designed for busy professionals, students, and
+                    creatives.
+                    With smart scheduling, goal tracking, and cloud sync, you’ll never miss a deadline again.</p>
+                <button class="start">
+                    Get Started Today
+                </button>
+            </div>
+        </header>
+
+        <main v-if="main">
+            <section id="benefits">
+                <h2 class="why">Why Choose ProPlanner?</h2>
+                <div class="mth">
+                    <div class="pro">
+                        <div v-for="file in planner" class="its">
+                            <img :src="file.image" alt="" class="img">
+                            <h3 class="ft">{{file.title}}</h3>
+                            <p id="content">{{file.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+        <section id="feature" v-if="premium">
+            <div class="feature">
+                <div class="track">
+                    <h1>Track projects, automate scheduling with us, and hit goal faster</h1>
+                    <p>Try 5 months premium individual for $3.99 per month </p>
+                    <p>Start free, upgrade anytime.</p>
+                    <p><strong>Pro Plan:</strong> $9.99/month – Unlock all premium features.</p>
+                    <div class="btns">
+                        <button class="btn">Get Premium Individual</button>
+                        <button class="btn-2">View All Plans</button>
+                    </div>
+                </div>
+            </div>
+            <div class="credit">
+                <div class="afford">
+                    <p class="p">Affordable for any situation</p>
+                    <p class="c">Choose a Premium plan and listen to ad-free without limits on your phone, laptop, and
+                        other
+                        devices. Pay in various ways. Cancel anytime.</p>
+                </div>
+                <div class="imahe">
+                    <div v-for="card in credit">
+                        <img :src="card.image" alt="" class="image">
+                    </div>
+                </div>
+                <p class="plus">+ 7more</p>
+            </div>
+            <div class="container">
+                <div class="more">
+
+                    <div class="offer">
+                        <button id="ai">6 months offer</button>
+                        <div class="person">
+                            <i class="fa-brands fa-think-peaks"> <span class="people">ProPlanner</span></i>
+                        </div>
+                        <h2 class="indent">Individual</h2>
+                        <div class="price">
+                            <p>$ 3.99 per month for 6 months</p>
+                            <p>$ 9.99/ month after</p>
+                        </div>
+                        <hr class="hr">
+                        <ul class="list">
+                            <li>1 Verified account</li>
+                            <li>cancel anytime</li>
+                        </ul>
+                        <div class="btn-con">
+                            <button class="btn-3">Get Premium Individual</button>
+
+                        </div>
+
+                        <p class="parag">
+                            Premium Individual only. ₱42 per month for 6 months, then ₱169 per month after. Offer
+                            only available if you haven't tried Premium before. Terms apply.
+
+                        </p>
+
+
+                    </div>
+                    <div class="offer">
+
+                        <button id="ai">2.99 for 2 months</button>
+                        <div class="person">
+                            <i class="fa-brands fa-think-peaks"> <span class="people">ProPlanner</span></i>
+                        </div>
+                        <h2 class="indent">Students</h2>
+                        <div class="price">
+                            <p>$ 2.99 for 2months</p>
+                            <p>$ 2.99/ month after</p>
+                        </div>
+                        <hr class="hr">
+
+                        <ul class="list">
+                            <li>1 Verified account</li>
+                            <li>Discount for eligible students</li>
+                            <li>cancel anytime</li>
+                        </ul>
+
+                        <div class="btn-con">
+                            <button class="btn-3">Try 2 months for 2.99</button>
+                        </div>
+
+
+                        <p class="parag">
+                            ₱85 for 2 months, then ₱85 per month after. Offer reserved for students enrolled in an
+                            eligible accredited institution of higher education. Not available to users who have
+                            already tried Premium. Subject to the Spotify Student Discount Terms and Conditions.
+
+                        </p>
+
+
+                    </div>
+                    <div class="offer">
+                        <button id="ai">4.99 for 2 months</button>
+                        <div class="person">
+                            <i class="fa-brands fa-think-peaks"> <span class="people">ProPlanner</span></i>
+                        </div>
+                        <h2 class="indent">Duo</h2>
+                        <div class="price">
+                            <p>$ 4.99 for 2months</p>
+                            <p>$ 4.99/ month after</p>
+                        </div>
+                        <hr class="hr">
+
+                        <ul class="list">
+                            <li>2 Verified account</li>
+                            <li>cancel anytime</li>
+                        </ul>
+                        <div class="btn-con">
+                            <button class="btn-3">Get Premium Individual</button>
+
+                        </div>
+
+                        <p class="parag">
+                            $ 4.99 for 2 months, then $ 4.99 per month after. Offer only available if you haven't
+                            tried
+                            Premium before. For couples who reside at the same address. Terms apply.
+                        </p>
+
+
+                    </div>
+                    <div class="offer">
+                        <button id="ai">6.99 for 2 months</button>
+                        <div class="person">
+                            <i class="fa-brands fa-think-peaks"> <span class="people">ProPlanner</span></i>
+                        </div>
+                        <h2 class="indent">Family</h2>
+                        <div class="price">
+                            <p>$ 6.99 for 2 months</p>
+                            <p>$ 6.99/ month after</p>
+                        </div>
+                        <hr class="hr">
+
+                        <ul class="list">
+                            <li>Up to 6 Premium accounts</li>
+                            <li>Parental controls for the plan manager</li>
+                            <li>cancel anytime</li>
+                        </ul>
+
+                        <div class="btn-con">
+                            <button class="btn-3">Try 6.99 for 2 months</button>
+
+                        </div>
+
+
+                        <p class="parag">
+                            ₱6.99 for 2 months, then ₱6.99 per month after. Offer only available if you haven't
+                            tried
+                            Premium before. For up to 6 family members residing at the same address. Terms apply.
+
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="try">
+
+                <div class="ex">
+                    <p class="e">Experience the difference</p>
+                    <p class="x">Go Premium and enjoy full control of your plan. Cancel anytime</p>
+                </div>
+            </div>
+        </section>
+
+        <section v-if="benefitss">
+            <div class="pl">
+                <h1 class="plam">ProPlanner Benefits</h1>
+
+                <div class="des">
+                    <div class="ign">
+                        <div v-for="fit in bft" class="idk">
+                            <img :src="fit.image" alt="" class="bImg">
+                            <p class="f">{{fit.ttl}}</p>
+                            <p class="i">{{fit.txt}}</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div class="f-mother">
+                <div class="f-space">
+                    <div id="flogo">
+                        <p id="fkrys">ProPlanner</p>
+                        <p id="fsmart">Your Smart Workflow Partner</p>
+                    </div>
+                    <div>
+
+                        <div>
+                            <p class="fq">Design your days, own your future. Smart planning is the first step to success.</p>
+
+                        </div>
+
+                        <div class="f-svg flex space-x-2 mb-2">
+                            <div class="svg">
+                                <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_34112_19522)">
+                                        <path
+                                            d="M15.9996 7.78349C11.4625 7.78349 7.78375 11.4629 7.78375 15.9999C7.78375 20.5379 11.4625 24.2157 15.9996 24.2157C20.5375 24.2157 24.2169 20.5379 24.2169 15.9999C24.2169 11.4629 20.5375 7.78349 15.9996 7.78349ZM15.9996 21.3334C13.0546 21.3334 10.6661 18.9457 10.6661 15.9999C10.6661 13.0542 13.0545 10.6665 15.9996 10.6665C18.9452 10.6665 21.3337 13.0542 21.3337 15.9999C21.3337 18.9456 18.9452 21.3334 15.9996 21.3334ZM26.4609 7.4593C26.4609 8.5188 25.6011 9.37862 24.5409 9.37862C23.4807 9.37862 22.6209 8.5188 22.6209 7.4593C22.6209 6.39937 23.4807 5.5393 24.5409 5.5393C25.6011 5.5393 26.4609 6.39937 26.4609 7.4593ZM31.1601 5.51962C30.751 4.46699 30.2039 3.57512 29.315 2.68549C27.5216 0.890804 25.068 0.208554 22.5972 0.0966787C20.8904 0.0178037 20.3455 0.000366211 15.9996 0.000366211C11.6551 0.000366211 11.1102 0.0178037 9.40337 0.0966787C6.92669 0.208804 4.47587 0.895304 2.68581 2.68543C0.88875 4.48249 0.209688 6.92855 0.0960625 9.40374C0.0183125 11.1106 0 11.6549 0 15.9999C0 20.3451 0.0183125 20.8901 0.0960625 22.5977C0.210187 25.0815 0.888063 27.5183 2.68569 29.3146C4.48306 31.1106 6.92837 31.7907 9.40337 31.9041C11.1102 31.9821 11.6551 31.9997 15.9996 31.9997C20.3456 31.9997 20.8904 31.982 22.5973 31.9041C25.0781 31.7904 27.5211 31.1097 29.3149 29.3146C31.1075 27.5207 31.7915 25.0674 31.9037 22.5976C31.9817 20.8901 32 20.345 32 15.9999C32 11.6547 31.9817 11.1106 31.9037 9.40368C31.8264 7.70024 31.5558 6.53762 31.1601 5.51962ZM29.0236 22.4654C28.9446 24.2032 28.5409 26.0108 27.2764 27.2768C25.9953 28.5596 24.2146 28.9444 22.4659 29.0242C20.7782 29.1006 20.2729 29.1174 15.9996 29.1174C11.7278 29.1174 11.2224 29.1006 9.53469 29.0242C7.78156 28.9442 6.00363 28.5529 4.72356 27.277C3.44719 26.0047 3.05437 24.2021 2.97619 22.4653C2.89975 20.7786 2.883 20.2726 2.883 15.9999C2.883 11.7281 2.89981 11.2221 2.97619 9.53437C3.05413 7.80455 3.46569 5.98368 4.72331 4.72393C5.99844 3.44668 7.79488 3.05587 9.53481 2.97649C11.2224 2.89943 11.7278 2.8833 15.9996 2.8833C20.2722 2.8833 20.7782 2.89943 22.4659 2.97649C24.2181 3.05643 25.9989 3.44593 27.2763 4.72368C28.5542 6.00205 28.9444 7.79174 29.0236 9.53449C29.1009 11.2221 29.1178 11.7281 29.1178 15.9999C29.1177 20.2726 29.1009 20.7786 29.0236 22.4654Z"
+                                            fill="currentColor"></path>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="svg">
+                                <svg width="100%" height="100%" viewBox="0 0 800 800" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M788.594 318.125C783.281 292.5 775.469 267.5 765.156 243.125C755.156 219.375 742.656 196.875 728.281 175.625C713.906 154.375 697.656 135 679.844 116.875C661.719 98.75 641.719 82.1875 621.094 68.4375C599.844 54.0625 576.719 41.5625 553.594 31.5625C529.531 21.25 504.531 13.4375 478.594 8.12502C452.344 2.81252 425.469 0 398.281 0C371.094 0 344.219 2.81252 317.969 8.12502C292.344 13.4375 267.344 21.25 243.281 31.5625C219.531 41.5625 197.031 54.0625 175.781 68.4375C154.531 82.8125 134.844 99.0625 117.031 116.875C99.2187 134.687 82.6562 155 68.5937 175.625C54.2187 196.875 41.7188 219.375 31.7188 243.125C21.4063 267.187 13.5938 292.187 8.28127 318.125C2.96877 344.375 0.15625 371.25 0.15625 398.438C0.15625 425.625 2.96877 452.5 8.28127 478.75C13.5938 504.375 21.4063 529.375 31.7188 553.438C41.7188 577.188 54.2187 599.687 68.5937 621.25C82.9687 642.5 99.2187 661.875 117.031 680C135.156 698.125 155.156 714.375 175.781 728.438C197.031 742.813 220.156 755.313 243.281 765.313C267.344 775.625 292.344 783.438 317.969 788.75C344.219 794.063 371.094 796.875 398.281 796.875C425.469 796.875 452.031 794.063 478.594 788.75C504.219 783.438 529.219 775.625 553.594 765.313C577.344 755.313 599.844 742.813 621.094 728.438C642.344 714.063 662.031 697.813 679.844 680C697.969 661.875 714.219 641.875 728.281 621.25C742.656 600 755.156 577.188 765.156 553.438C775.469 529.375 783.281 504.375 788.594 478.75C793.906 452.5 796.719 425.625 796.719 398.438C796.719 371.25 793.906 344.375 788.594 318.125ZM398.281 58.125C484.531 58.125 562.969 90.3125 622.969 143.125C622.031 144.375 573.906 218.125 445.156 266.25C387.031 159.375 322.969 74.375 317.656 67.5C343.594 61.5625 370.469 58.125 398.281 58.125ZM316.094 68.125C316.406 67.8125 316.094 67.8125 316.094 68.125ZM252.969 90.625C257.656 96.5625 320.469 182.187 379.531 286.875C216.094 330 74.2187 328.438 65.4687 328.125C87.0312 222.812 157.969 135.313 252.969 90.625ZM144.844 625.625C90.7813 565.625 57.6562 485.938 57.6562 398.438C57.6562 394.687 57.9688 391.25 57.9688 387.813C63.9062 387.813 232.031 391.875 407.344 339.375C417.031 358.438 426.406 378.125 435.156 397.188C430.781 398.438 426.094 399.687 421.719 401.25C237.969 460.625 144.844 625.625 144.844 625.625ZM398.281 738.75C318.906 738.75 246.719 711.562 188.906 666.562C190.156 664.062 256.094 523.75 456.094 454.062C456.719 453.75 457.656 453.438 458.281 453.438C506.094 577.813 525.781 681.875 530.781 711.875C490.156 729.062 445.156 738.75 398.281 738.75ZM588.281 680.625C584.844 660 566.719 560.312 522.031 437.5C632.031 420 727.344 450 734.219 452.5C719.219 547.187 664.531 629.062 588.281 680.625ZM501.406 383.75C498.906 377.812 496.406 372.188 493.906 366.25C486.719 349.375 479.219 333.125 471.094 316.875C605.469 262.187 660.156 183.125 660.781 182.187C708.281 240.312 737.344 314.375 738.281 395C733.594 394.062 618.281 369.062 501.406 383.75Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </div>
+
+                            <div class="svg">
+                                <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M26.5614 26.562H22.1164V19.6006C22.1164 17.9406 22.0867 15.8037 19.8045 15.8037C17.4893 15.8037 17.1352 17.6123 17.1352 19.4798V26.5615H12.6901V12.2461H16.9574V14.2025H17.0172C17.8873 12.7147 19.5051 11.8261 21.2275 11.89C25.7327 11.89 26.5634 14.8534 26.5634 18.7088L26.5614 26.562ZM7.67454 10.2893C6.24989 10.2896 5.09481 9.13478 5.09453 7.71016C5.09425 6.28547 6.24899 5.13034 7.67357 5.13006C9.09821 5.12979 10.2533 6.28456 10.2536 7.70919C10.2538 9.13388 9.09918 10.2891 7.67454 10.2893ZM9.89705 26.5621H5.44738V12.2461H9.89705V26.5621ZM28.7775 1.00207H3.21371C2.00555 0.988413 1.01476 1.95623 1 3.16443V28.8351C1.01427 30.0439 2.00492 31.0127 3.21371 30.9998H28.7775C29.9887 31.015 30.9832 30.0463 31 28.8351V3.16263C30.9827 1.952 29.9881 0.984256 28.7775 1.00019V1.00207Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </div>
+
+                            <div class="svg">
+                                <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_34112_19546)">
+                                        <path
+                                            d="M18.9791 13.5498L30.6356 0H27.8734L17.752 11.7651L9.66809 0H0.344238L12.5687 17.7909L0.344238 32H3.10663L13.7951 19.5756L22.3323 32H31.6562L18.9784 13.5498H18.9791ZM15.1956 17.9477L13.957 16.1761L4.10196 2.07948H8.34482L16.298 13.4559L17.5366 15.2275L27.8747 30.0151H23.6319L15.1956 17.9484V17.9477Z"
+                                            fill="currentColor"></path>
+                                    </g>
+
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fText">
+                    <div class="spacey">
+                        <p class="fl">Get to Know Us</p>
+                        <div class="mfh">
+                            <p class="fh">Careers</p>
+                            <p class="fh">Blog</p>
+                            <p class="fh">About Us</p>
+                            <p class="fh">Contact</p>
+                        </div>
+                    </div>
+                    <div class="spacey">
+                        <p class="fl">Let Us Help You</p>
+
+                        <div class="mfh">
+                            <p class="fh">Your Account</p>
+                            <p class="fh">Rates and Policies</p>
+                            <p class="fh">Cancel Premium</p>
+                            <p class="fh">Manage Content</p>
+                            <p class="fh">Help</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <hr>
+            <div class="copyRight">
+                <p>© 2026 <span class="last">ProPlanner</span>. All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    menu: false,
+                    bgColor: false,
+                    premium: false,
+                    benefitss: false,
+                    main: true,
+                    hero: true,
+
+                    planner: [
+                        {
+                            image: 'https://images.unsplash.com/photo-1769596722257-282ec3fe8594?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGNhbGVuZGFyJTIwMjAyNnxlbnwwfHwwfHx8MA%3D%3D',
+                            title: 'Smart Calendar',
+                            content: 'Plan your days with AI-assisted scheduling.'
+                        },
+                        {
+                            image: 'https://plus.unsplash.com/premium_photo-1681487794038-efe7b1a8f538?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdvYWx8ZW58MHx8MHx8fDA%3D',
+                            title: 'Goal Tracking',
+                            content: 'Stay motivated with progress insights.'
+                        },
+                        {
+                            image: 'https://www.bing.com/th/id/OIP.DEYkC7Q9qgjXuCkOOBPgKwAAAA?w=193&h=135&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2',
+                            title: 'Cloud Sync',
+                            content: 'Access your plans anywhere, anytime.'
+                        },
+                        {
+                            image: 'https://plus.unsplash.com/premium_photo-1661878265739-da90bc1af051?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGF0YSUyMHByaXZhY3l8ZW58MHx8MHx8fDA%3D',
+                            title: 'Secure & Private',
+                            content: 'Managed securely,Your data stays yours.'
+                        },
+
+
+                    ],
+
+                    credit: [
+                        {
+                            image: 'https://tse1.mm.bing.net/th/id/OIP.yWN3fTVybv_pw8eEVnveNgHaD5?r=0&pid=ImgDet&w=187&h=98&c=7&dpr=1.3&o=7&rm=3'
+                        },
+                        {
+                            image: 'https://th.bing.com/th/id/OIP._avHCqarEhv6x7SK-DMYPgHaDA?w=295&h=142&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3'
+                        },
+                        {
+                            image: 'https://th.bing.com/th?q=MasterCard%20Logo%20SVG&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-ph&adlt=demote&o=7&rm=3'
+                        },
+                        {
+                            image: 'https://th.bing.com/th?q=S+Pay+Logo.png&w=120&h=120&c=1&rs=1&qlt=70&r=0&o=7&cb=1&dpr=1.3&pid=InlineBlock&rm=3&mkt=en-PH&cc=PH&setlang=en&adlt=moderate&t=1&mw=247'
+                        },
+                    ],
+
+                    bft: [
+                        {
+                            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Personalized Planning & Guidance',
+                            txt: 'Creates fully customized plans that adapt to your goals, preferences, and changing priorities.'
+                        },
+
+                        {
+                            image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Cross-Life Pillar Organization',
+                            txt: 'Lets you manage work, health, learning, relationships, and finances all in one balanced place.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Seamless Calendar Sync',
+                            txt: 'Automatically connects and updates all your events from Google Calendar and other tools in real time.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Smart Reminders & Deadline Management',
+                            txt: 'Sends timely, priority-based alerts so you never miss tasks, deadlines, or important milestones.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Goal Tracking & Progress Insights',
+                            txt: 'Shows clear progress reports and charts to help you track goals and stay motivated.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Reduced Overwhelm & Burnout Prevention',
+                            txt: 'Plans tasks evenly and suggests breaks so you stay productive without overworking or stress.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Secure & Private Data Management',
+                            txt: 'Uses strong encryption to keep all your plans and personal information safe and private.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Time Optimization & Efficiency',
+                            txt: 'Analyzes your habits to suggest the best time for tasks, helping you finish more in less time.'
+                        },
+                        {
+                            image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                            ttl: 'Easy Collaboration & Sharing',
+                            txt: 'Lets you share plans, tasks, and schedules with others simply for smooth teamwork or family coordination.'
+                        },
+
+
+                    ]
+                }
+            },
+            methods: {
+                menuBar() {
+                    this.menu = true;
+                    this.bgColor = true;
+                },
+                close() {
+                    this.menu = false;
+                    this.bgColor = false;
+                },
+                seeFeatures() {
+                    this.premium = true;
+                    this.main = false;
+                    this.hero = false;
+                    this.benefitss = false;
+                    this.menu = false;
+                    this.bgColor = false;
+
+                },
+                homePg() {
+                    this.premium = false;
+                    this.main = true;
+                    this.hero = true;
+                    this.menu = false;
+                    this.bgColor = false;
+                    this.benefitss = false;
+
+                },
+
+                seeBenefits() {
+                    this.premium = false;
+                    this.main = false;
+                    this.hero = false;
+                    this.menu = false;
+                    this.bgColor = false;
+                    this.benefitss = true;
+
+                },
+
+            }
+
+        }).mount('#app')
+
+    </script>
+
+
+
+
+</body>
+
+</html>
